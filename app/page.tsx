@@ -1,3 +1,48 @@
+const reviews = [
+  {
+    name: "小豆主人",
+    text: "第一次洗澡不再发抖，美容师很有耐心，还把耳朵情况说得很清楚。",
+    tag: "胆小狗狗",
+  },
+  {
+    name: "奶盖主人",
+    text: "猫咪吹干很蓬松，没有香精味，回家以后状态也很放松。",
+    tag: "长毛猫",
+  },
+  {
+    name: "卷卷主人",
+    text: "造型剪得圆润自然，腿毛细节处理得很干净，拍照特别好看。",
+    tag: "精修造型",
+  },
+  {
+    name: "布丁主人",
+    text: "预约前会先确认皮肤状态，洗完没有泛红，护理建议也很实用。",
+    tag: "敏感皮肤",
+  },
+  {
+    name: "摩卡主人",
+    text: "全程能看到护理进度，工作人员会及时沟通，第一次来就很安心。",
+    tag: "透明服务",
+  },
+  {
+    name: "芝麻主人",
+    text: "浮毛梳得特别彻底，家里掉毛明显少了，毛也摸起来更顺。",
+    tag: "换毛护理",
+  },
+  {
+    name: "团团主人",
+    text: "美容师没有强行推套餐，只按实际毛结情况处理，价格说得清清楚楚。",
+    tag: "清晰报价",
+  },
+  {
+    name: "可乐主人",
+    text: "老年狗洗护节奏很温柔，中途还会让它休息，回家没有疲惫感。",
+    tag: "老年犬",
+  },
+];
+
+const reviewSlides = [...reviews, ...reviews];
+
 export default function Home() {
   return (
     <>
@@ -137,42 +182,31 @@ export default function Home() {
           <section className="reviews" id="reviews">
             <div className="section-head">
               <h2>顾客反馈</h2>
-              <p>干净只是开始，让宠物愿意下次再来，才是我们在意的事情。</p>
+              <p>更多真实到店体验，来自胆小、敏感、长毛和第一次洗护的小朋友们。</p>
             </div>
-            <div className="grid">
-              <article className="review-card">
-                <div className="stars" aria-label="五星好评">
-                  <span>☆</span>
-                  <span>爪</span>
-                  <span>☆</span>
-                  <span>爪</span>
-                  <span>☆</span>
-                </div>
-                <h3>小豆主人</h3>
-                <p>第一次洗澡不再发抖，美容师很有耐心，还把耳朵情况说得很清楚。</p>
-              </article>
-              <article className="review-card">
-                <div className="stars" aria-label="五星好评">
-                  <span>☆</span>
-                  <span>爪</span>
-                  <span>☆</span>
-                  <span>爪</span>
-                  <span>☆</span>
-                </div>
-                <h3>奶盖主人</h3>
-                <p>猫咪吹干很蓬松，没有香精味，回家以后状态也很放松。</p>
-              </article>
-              <article className="review-card">
-                <div className="stars" aria-label="五星好评">
-                  <span>☆</span>
-                  <span>爪</span>
-                  <span>☆</span>
-                  <span>爪</span>
-                  <span>☆</span>
-                </div>
-                <h3>卷卷主人</h3>
-                <p>造型剪得圆润自然，腿毛细节处理得很干净，拍照特别好看。</p>
-              </article>
+            <div className="review-carousel" aria-label="顾客评价轮播">
+              <div className="review-track">
+                {reviewSlides.map((review, index) => (
+                  <article
+                    className="review-card"
+                    key={`${review.name}-${index}`}
+                    aria-hidden={index >= reviews.length}
+                  >
+                    <div className="review-meta">
+                      <div className="stars" aria-label="五星好评">
+                        <span>☆</span>
+                        <span>爪</span>
+                        <span>☆</span>
+                        <span>爪</span>
+                        <span>☆</span>
+                      </div>
+                      <span className="review-tag">{review.tag}</span>
+                    </div>
+                    <h3>{review.name}</h3>
+                    <p>{review.text}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </section>
       
